@@ -1,0 +1,8 @@
+<h1><%=get_user(@user_id).user_name + ", "%> Edit your Profile</h1>
+<p> Only change your desired information and press the button</p>
+    <form action="/user/<%= @user_id %>/edit" method="post" name="edit_profile_form">
+       First name: <input type="text" name="edit_profile[first_name]"><br>
+       Last name:<input type="text" name="edit_profile[last_name]"><br>
+       Username: <input type="text" name="edit_profile[user_name]"><br>
+       Email: <input type="text" name="edit_profile[email]"><br>
+      <input type=submit value="Edit Profile"></form>

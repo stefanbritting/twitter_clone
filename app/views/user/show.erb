@@ -1,0 +1,22 @@
+<h1> Profile of: <%=" " + get_user(@user_id).user_name%> </h1>
+<div>
+  <p> First name: <%= get_user(@user_id).first_name %>
+  <p> Last name: <%= get_user(@user_id).last_name %>
+  <p> Username: <%= get_user(@user_id).user_name %>
+  <p> Email: <%= get_user(@user_id).email %>
+</div>
+<div>Followers:<%=" " + get_user(@user_id).follower.length.to_s%> </div>
+<div>Is following:<%=" " + get_user(@user_id).following.length.to_s%> </div>
+<% if get_current_user.id.to_s == @user_id %>
+  <a href="/user/<%=@user_id%>/edit">Edit my Profile</a>
+<% else %>
+  <form method="post" action="/user/<%=get_current_user.id%>/follows/<%=@user_id%>">
+    <input type=submit value="follow"></form>
+<% end %>
+<p> </p>
+<div>
+  <h2>Tweets of: <%=" " + get_user(@user_id).user_name%> </h2>
+  <% get_user(@user_id).tweets.each do |tweet| %>
+    <a href="/tweet/<%=tweet.id%>"> <%=tweet.tweet %> </a> <br></br>
+  <%end %>
+</div>

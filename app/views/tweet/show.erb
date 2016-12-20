@@ -1,0 +1,10 @@
+<h1> <%=get_tweet(@tweet_id).tweet %> </h1>
+<% if get_current_user.id == get_tweet(@tweet_id).user_id %>
+  <form method="post" action="/tweet/<%=@tweet_id%>/edit">
+      <input type="text" name="edit_tweet[tweet]"><br>
+      <input type=submit value="Edit">
+  </form>
+  <form method="post" action="/tweet/<%=@tweet_id%>/delete">
+    <input type=submit value="delete">
+  </form>
+<%end%>
