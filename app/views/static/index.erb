@@ -1,16 +1,25 @@
 <% if logged_in? %>
-  <a href="/user/<%= get_current_user.id%>">My Profile</a> <br></br>
-  <form method="post" action="user/sign_out">
-      <input type=submit value="Sign-out!">
-  </form>
-  <form method="post" action="/tweet/create">
-      <input type=text placeholder="Shout out something..." name="shout[tweet]" maxlength="140" ><br>
-      <input type=submit value="Shout out!">
-  </form>
-  <p> User list</p>
-  <% User.all.each do |user| %>
-    <a href="/user/<%=user.id%>"><%=user.user_name%></a> <br></br>
-  <% end %>
+  <div class="container-fluid">
+      <div class="col-md-4">
+        <p> User list</p>
+        <% User.all.each do |user| %>
+          <a href="/user/<%=user.id%>"><%=user.user_name%></a> <br></br>
+        <% end %>
+      </div>
+      <div class="col-md-4">
+        <form method="post" action="/tweet/create">
+            <input type=text placeholder="Shout out something..." name="shout[tweet]" maxlength="140" ><br>
+            <input type=submit value="Shout out!">
+        </form>
+      </div>
+      <div class="col-md-4">
+        <a href="/user/<%= get_current_user.id%>">My Profile</a>
+        <form method="post" action="user/sign_out">
+            <input type=submit value="Sign-out!">
+        </form>
+      </div>
+    </div>
+  </div>
 <% else %>
   <a id="sign_up" href="/user/new">Sign up!</a> <br></br>
   <a href="/user/sign_in">Sign in!</a> <br></br>
