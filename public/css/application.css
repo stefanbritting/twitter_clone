@@ -1,0 +1,9 @@
+.btn-default {
+  background-color: #A3C6FF;
+  font-size: 15px;
+  padding: 5px 16px;
+  margin: 2px;
+}
+.btn-default:hover {
+  background-color: #4a82db;
+}
