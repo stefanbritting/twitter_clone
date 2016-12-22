@@ -1,13 +1,13 @@
 <% if logged_in? %>
   <div class="container-fluid">
-      <div class="col-md-4">
+      <div class="col-md-2" style="border: 2px solid black">
         <p> User list</p>
         <% User.all.each do |user| %>
           <a href="/user/<%=user.id%>"><%=user.user_name%></a> <br></br>
         <% end %>
       </div>
-      <div class="col-md-4">
-        <form class="navbar-form navbar-left" role="search" method="post" action="/tweet/create">
+      <div class="col-md-6">
+        <form class="navbar-form navbar-left " role="search" method="post" action="/tweet/create">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Shout out something..." name="shout[tweet]" maxlength="140">
           </div>
@@ -18,10 +18,12 @@
         </form>
       </div>
       <div class="col-md-4">
-        <a href="/user/<%= get_current_user.id%>">My Profile</a>
-        <form method="post" action="user/sign_out">
-            <input type=submit value="Sign-out!">
-        </form>
+        <div class="pull-right">
+          <a href="/user/<%= get_current_user.id%>">My Profile</a>
+          <form method="post" action="user/sign_out">
+              <input type=submit value="Sign-out!">
+          </form>
+        </div>
       </div>
     </div>
   </div>
